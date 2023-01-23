@@ -4,7 +4,7 @@ import "../style/botProfile.css"
 import OneBot from "./OneBot";
 import { useHistory } from "react-router-dom"
 
-function BotProfile({deleteWithoutRefresh,id,image,name,phrase,health,armor,damage,addBot,handleId}) {
+function BotProfile({deleteArmyItem,deleteWithoutRefresh,id,image,name,phrase,health,armor,damage,addBot,handleId}) {
   let [state,setState] = useState('')
   let [added,setAdded] = useState(true)
 
@@ -34,6 +34,7 @@ function BotProfile({deleteWithoutRefresh,id,image,name,phrase,health,armor,dama
         </NavLink>
           <button onClick = {()=>{
             deleteItem()
+            deleteArmyItem(id)
             deleteWithoutRefresh(id)
             }}id="delete">X</button>
             </div>

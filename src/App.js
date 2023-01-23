@@ -107,6 +107,15 @@ function handleId(value) {
 
 console.log(picId)
 
+function deleteArmyItem(value){
+  if(value == null){console.log("null")}
+  let deletedCard = document.querySelector(`.army${value}`)
+
+  if(deletedCard === null){console.log("null")}
+  else{
+  deletedCard.remove()}
+}
+
 
 function addBot(id,name,image,phrase,health,armor,damage){
  let array = [...numbersArray]
@@ -118,6 +127,7 @@ function addBot(id,name,image,phrase,health,armor,damage){
     let botArmy = document.querySelector("#yourBotArmy")
     let newBot = document.createElement("div")
     newBot.id = "army-container"
+    newBot.className = `army${id}`
     newBot.setAttribute("value", id)
     newBot.innerHTML = 
    `
@@ -145,7 +155,7 @@ function addBot(id,name,image,phrase,health,armor,damage){
       <YourBotArmy handleSort={handleSort}/>
       <Switch>
        <Route exact path="/">
-         <BotCollection deleteWithoutRefresh={deleteWithoutRefresh} handleId = {handleId} addBot = {addBot} bots = {bots}/>
+         <BotCollection deleteArmyItem={deleteArmyItem} deleteWithoutRefresh={deleteWithoutRefresh} handleId = {handleId} addBot = {addBot} bots = {bots}/>
        </Route>
        <Route path="/bot">
         <OneBot addBot = {addBot} bots = {bots} picId = {picId}/>
